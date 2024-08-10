@@ -12,6 +12,9 @@
   </head>
 
   <body>
+    <%= render partial: "shared/nav_bar" %>
+    <%= yield :header %>
     <%= yield %>
+    <%= yield :footer %>
   </body>
 </html>
