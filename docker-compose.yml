@@ -13,7 +13,11 @@ services:
       - backend
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     command: bundle exec puma -C config/puma.rb
     depends_on:
       - db
