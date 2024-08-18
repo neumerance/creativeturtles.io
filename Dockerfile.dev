@@ -3,7 +3,7 @@ FROM ruby:3.3.1
 
 # Set environment variables
 ENV NODE_VERSION 20
-ENV RAILS_ENV=production
+ENV RAILS_ENV=development
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y \
@@ -31,13 +31,13 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 
 # Install gems
-RUN bundle install --without development test
+RUN bundle install
 
 # Copy the application code
 COPY . .
 
 # Precompile assets
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+# RUN RAILS_ENV=production bundle exec rails assets:precompile
 
 # Expose port 3000 to the Docker host
 EXPOSE 3000

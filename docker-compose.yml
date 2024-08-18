@@ -1,30 +1,52 @@
 version: '3.8'
+
 services:
   db:
     image: postgres:14
     volumes:
-      - creativeturtles_io_dev_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - creativeturtles_io_prod_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_DB: creativeturtles_io_development
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - backend
 
   web:
     build: .
-    command: bundle exec rails s -b '0.0.0.0' -p 3000
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
-    ports:
-      - "3000:3000"
     depends_on:
       - db
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
+      LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
+      LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
       DB_HOST: db
-    stdin_open: true
-    tty: true
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      RAILS_SECRET_KEY_BASE: ${RAILS_SECRET_KEY_BASE}
+
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+    networks:
+      - backend
 
 volumes:
-  creativeturtles_io_dev_data:
+  creativeturtles_io_prod_data:
+
+networks:
+  backend:
+    driver: bridge

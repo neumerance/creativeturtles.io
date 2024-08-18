@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - creativeturtles_io_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: creativeturtles_io_development
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bundle exec rails s -b '0.0.0.0' -p 3000
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      DB_HOST: db
+    stdin_open: true
+    tty: true
+
+volumes:
+  creativeturtles_io_dev_data:
