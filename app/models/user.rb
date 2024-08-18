@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum :user_type, { talent: 1, client: 2 }
+
   def self.ransackable_attributes(auth_object = nil)
     ["email"]
   end

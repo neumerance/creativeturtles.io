@@ -75,3 +75,4 @@ end
 
 gem "devise", "~> 4.9"
 gem 'dotenv'
+gem 'country_select', '~> 8.0'
