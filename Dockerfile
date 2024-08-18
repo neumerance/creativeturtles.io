@@ -5,6 +5,12 @@ FROM ruby:3.3.1
 ENV NODE_VERSION 20
 ENV RAILS_ENV=production
 
+# Define the build argument
+ARG SECRET_KEY_BASE
+
+# Set the environment variable inside the container
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y \
   build-essential \
