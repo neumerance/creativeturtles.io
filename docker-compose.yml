@@ -33,6 +33,7 @@ services:
 
   nginx:
     image: nginx:latest
+    user: root
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - /etc/letsencrypt:/etc/letsencrypt

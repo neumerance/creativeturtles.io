@@ -15,8 +15,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-      args:
-        SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     command: bundle exec rails s -b '0.0.0.0' -p 3000
     volumes:
       - .:/app
