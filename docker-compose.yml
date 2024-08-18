@@ -25,9 +25,7 @@ services:
       RAILS_ENV: production
       LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
       LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
-      DB_HOST: db
-      DB_USERNAME: creativeturtles_io
-      DB_PASSWORD: ${DB_PASSWORD}
+      DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     networks:
       - backend
