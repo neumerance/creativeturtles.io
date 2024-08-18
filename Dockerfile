@@ -14,7 +14,8 @@ RUN apt-get update -qq && apt-get install -y \
   poppler-utils \
   curl \
   git \
-  vim
+  vim \
+  libvips42
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && \

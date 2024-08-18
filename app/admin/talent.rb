@@ -1,5 +1,5 @@
 ActiveAdmin.register Talent do
-  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :country
+  permit_params :email, :handle, :password, :password_confirmation, :first_name, :last_name, :country
 
   filter :email
   filter :handle
@@ -17,6 +17,7 @@ ActiveAdmin.register Talent do
     end
 
     inputs 'Abouts' do
+      f.input :handle
       f.input :first_name
       f.input :last_name
       f.input :headline
@@ -30,6 +31,7 @@ ActiveAdmin.register Talent do
   index do
     selectable_column
     column :email
+    column :handle
     column :first_name
     column :last_name
     column :country

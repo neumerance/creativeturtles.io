@@ -54,6 +54,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri ]
   gem "rspec-rails", "~> 6.1"
   gem "shoulda-matchers", "~> 6.4"
+  gem 'factory_bot_rails'
+  gem "ffaker", "~> 2.23"
 end
 
 group :development do
@@ -76,3 +78,4 @@ end
 gem "devise", "~> 4.9"
 gem 'dotenv'
 gem 'country_select', '~> 8.0'
+gem 'aws-sdk-s3', '~> 1.0'
