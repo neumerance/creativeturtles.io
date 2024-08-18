@@ -6,8 +6,8 @@ services:
     volumes:
       - creativeturtles_io_prod_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: ${DB_USERNAME}
+      POSTGRES_USER: creativeturtles_io
+      POSTGRES_DB: creativeturtles_io_production
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     networks:
       - backend
@@ -25,7 +25,8 @@ services:
       RAILS_ENV: production
       LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
       LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
-      DB_USERNAME: ${DB_USERNAME}
+      DB_HOST: db
+      DB_USERNAME: creativeturtles_io
       DB_PASSWORD: ${DB_PASSWORD}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     networks:
