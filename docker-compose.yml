@@ -19,11 +19,8 @@ services:
       - .:/app
     depends_on:
       - db
-    env_file:
-      - .env
     environment:
       RAILS_ENV: production
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     networks:
       - backend
 
