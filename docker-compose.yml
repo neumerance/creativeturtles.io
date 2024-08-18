@@ -19,15 +19,11 @@ services:
       - .:/app
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
       RAILS_ENV: production
-      LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
-      LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
-      DB_HOST: db
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      RAILS_SECRET_KEY_BASE: ${RAILS_SECRET_KEY_BASE}
-
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     networks:
       - backend
 

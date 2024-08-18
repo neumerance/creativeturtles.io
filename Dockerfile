@@ -4,6 +4,7 @@ FROM ruby:3.3.1
 # Set environment variables
 ENV NODE_VERSION 20
 ENV RAILS_ENV=production
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y \
