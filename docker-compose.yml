@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:14
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - creativeturtles_io_dev_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -13,7 +13,7 @@ services:
 
   web:
     build: .
-    command: bundle exec rake db:migrate && bundle exec rails s -b '0.0.0.0' -p 3000
+    command: bundle exec rails s -b '0.0.0.0' -p 3000
     volumes:
       - .:/app
     ports:
@@ -22,9 +22,9 @@ services:
       - db
     environment:
       RAILS_ENV: development
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      DB_HOST: db
     stdin_open: true
     tty: true
 
 volumes:
-  postgres_data:
+  creativeturtles_io_dev_data:
