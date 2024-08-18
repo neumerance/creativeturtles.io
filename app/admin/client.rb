@@ -1,5 +1,5 @@
 ActiveAdmin.register Client do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :country
 
   filter :email
   filter :created_at
@@ -7,11 +7,14 @@ ActiveAdmin.register Client do
   form title: 'Talent' do |f|
     f.semantic_errors
 
-    inputs 'Logins' do
-      input :email
-      input :password
-      input :password_confirmation
+    if f.object.new_record?
+      inputs 'Logins' do
+        f.input :email
+        f.input :password, required: false
+        f.input :password_confirmation, required: false
+      end
     end
+
 
     inputs 'Abouts' do
       input :first_name
@@ -28,5 +31,7 @@ ActiveAdmin.register Client do
     column :first_name
     column :last_name
     column :country
+
+    actions
   end
 end

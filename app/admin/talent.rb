@@ -1,5 +1,5 @@
 ActiveAdmin.register Talent do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :country
 
   filter :email
   filter :handle
@@ -8,18 +8,20 @@ ActiveAdmin.register Talent do
   form title: 'Talent' do |f|
     f.semantic_errors
 
-    inputs 'Logins' do
-      input :email
-      input :password
-      input :password_confirmation
+    if f.object.new_record?
+      inputs 'Logins' do
+        f.input :email
+        f.input :password, required: false
+        f.input :password_confirmation, required: false
+      end
     end
 
     inputs 'Abouts' do
-      input :first_name
-      input :last_name
-      input :headline
-      input :about
-      input :country
+      f.input :first_name
+      f.input :last_name
+      f.input :headline
+      f.input :about
+      f.input :country
     end
 
     actions
@@ -31,5 +33,7 @@ ActiveAdmin.register Talent do
     column :first_name
     column :last_name
     column :country
+
+    actions
   end
 end
