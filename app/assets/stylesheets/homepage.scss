@@ -1,19 +1,53 @@
 .homepage {
   &__hero-banner {
-    background: url("hero_banner.jpg") top center;
-    background-size: cover;
-    height: 600px;
+    background: url("repeating_hero_bg.png") repeat-x;
+    background-position-x: center;
+    background-position-y: bottom;
+    height: 720px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+
+    &__office {
+      width: 1280px;
+      height: 720px;
+      position: absolute;
+      bottom: 0;
+      background: url("hero_bg.png") no-repeat;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: bottom;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      padding-top: 160px;
+    }
+
+    &__panelist {
+      width: 1280px;
+      height: 720px;
+      position: absolute;
+      bottom: 40px;
+      background: url("frog_panelist.png") bottom center no-repeat;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: bottom;
+    }
 
     &__title {
-      color: #000000;
-      font-family: 'Satoshi-Bold';
-
-      &--title {
+      &--main {
+        font-size: 4em;
+        color: #ff922b;
         font-family: 'Satoshi-Black';
+      }
+
+      &--sub {
+        font-size: 2.5em;
+        color: #784b31;
+        font-family: 'Satoshi-Bold';
       }
     }
 
@@ -21,5 +55,13 @@
       background: #f952e6 !important;
       text-transform: uppercase;
     }
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #f75e05, #f75e05, #fbb268);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
   }
 }
