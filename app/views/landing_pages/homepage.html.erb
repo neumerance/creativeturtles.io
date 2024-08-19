@@ -1,16 +1,27 @@
 <%= content_for :header do %>
-  <div class="homepage">
-    <div class="homepage__hero-banner">
-      <div class="homepage__hero-banner__office">
-        <h1 class="homepage__hero-banner__title homepage__hero-banner__title--main gradient-text">
-          All Your Creative Tools in One Place!
-        </h1>
-        <h2 class="homepage__hero-banner__title homepage__hero-banner__title--sub">
-          Top-Quality Digital Products, Ready to Go
-        </h2>
-      </div>
-      <div class="homepage__hero-banner__panelist">
-      </div>
+  <div class="hero-banner">
+    <div class="hero-banner__office">
+      <h1 class="hero-banner__title hero-banner__title--main gradient-text">
+        All Your Creative Tools in One Place!
+      </h1>
+      <h2 class="hero-banner__title hero-banner__title--sub">
+        Top-Quality Digital Products, Ready to Go
+      </h2>
+    </div>
+    <div class="hero-banner__panelist">
     </div>
   </div>
 <% end %>
+<div data-controller="homepage">
+  <div class="container">
+    <div class="product-thumbnail" data-slideshow-target="thumbnails">
+      <img class="product-thumbnail__item" src="https://picsum.photos/200/300?random=2" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/200/300?random=3" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/300/200?random=1" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/200/300?random=2" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/300/300?random=3" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/300/400?random=4" />
+      <img class="product-thumbnail__item" src="https://picsum.photos/300/500?random=2" />
+    </div>
+  </div>
+</div>
