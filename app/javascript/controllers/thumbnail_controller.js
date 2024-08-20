@@ -11,7 +11,9 @@ export default class extends Controller {
   initThumbnailLayout() {
     new Masonry('.product-thumbnail', {
       itemSelector: '.product-thumbnail__item',
-      columnWidth: 400
+      columnWidth: 242,
+      gutter: 10,
+      fitWidth: true,
     });
   }
 }

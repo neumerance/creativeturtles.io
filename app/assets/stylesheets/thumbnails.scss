@@ -1,0 +1,17 @@
+.product-thumbnail {
+  width: 1280px;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &__item {
+    width: 242px;
+    height: 371px;
+    background-color: #000000;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+}  
