@@ -17,6 +17,7 @@ ActiveAdmin.register Talent do
     end
 
     inputs 'Abouts' do
+      f.input :photo, as: :file
       f.input :handle
       f.input :first_name
       f.input :last_name
