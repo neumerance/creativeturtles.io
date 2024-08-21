@@ -30,6 +30,11 @@ ActiveAdmin.register Talent do
 
   index do
     selectable_column
+    column :photo do |i|
+      if i.photo.attached?
+        image_tag url_for(i.photo.variant(:thumb))
+      end
+    end
     column :email
     column :handle
     column :first_name

@@ -7,4 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+admin = AdminUser.create!(email: 'dev@reinteractive.io', password: 'ABC12abc', password_confirmation: 'ABC12abc') if Rails.env.development?
+
+6.times do
+  sleep 1
+  talent = FactoryBot.create(:talent)
+  3.times do
+    FactoryBot.create(:product, talent: talent, product_type: :digital)
+  end
+end

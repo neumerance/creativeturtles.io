@@ -21,39 +21,5 @@
   </div>
 </div>
 <div class="thumbnail-container" data-controller="thumbnail">
-  <div class="product-thumbnail" data-slideshow-target="thumbnails">
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-    <div class="product-thumbnail__item"></div>
-  </div>
+  <%= render partial: "shared/thumbnail", locals: { products: @products } %>
 </div>
-

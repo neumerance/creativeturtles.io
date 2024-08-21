@@ -52,8 +52,14 @@ ActiveAdmin.register Product do
 
   show do
     attributes_table do
+      row :talent do |i|
+        if i.talent
+          "#{i.talent.full_name} | #{i.talent.handle}"
+        end
+      end  
       row :name
       row :slug
+      row :description
       row :images do |i|
         if i.images.attached?
           i.images.map do |image|

@@ -9,9 +9,8 @@ class Product < ApplicationRecord
   end
   
   has_one_attached :package 
-
   before_validation :ensure_slug
-
+  validates :slug, presence: true
   enum :product_type, { digital: 0, physical: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
