@@ -1,5 +1,12 @@
 ActiveAdmin.register Talent do
-  permit_params :email, :handle, :password, :password_confirmation, :first_name, :last_name, :country
+  permit_params :photo, 
+                :email, 
+                :handle, 
+                :password, 
+                :password_confirmation, 
+                :first_name, 
+                :last_name, 
+                :country
 
   filter :email
   filter :handle
