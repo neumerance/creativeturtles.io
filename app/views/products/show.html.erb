@@ -29,6 +29,10 @@
     <p class="product-page__thumbnail-description-container__product-description"><%= @product.description %></p>
   </div>
   <div class="product-page__thumbnail-buy-container">
+    <div class="product-page__thumbnail__author-container">
+      <span class="product-page__thumbnail__author-container__label">Designed by</span>
+      <%= render partial: "shared/talent_badge", locals: { talent: @product.talent } %>
+    </div>
     <div class="product-page__thumbnail-buy-container__buy-now">
       <h3 class="product-page__thumbnail-buy-container__buy-now__title">One time purchase</h3>
       <h2 class="product-page__thumbnail-buy-container__buy-now__price">$<%= @product.price %> USD</h2>
