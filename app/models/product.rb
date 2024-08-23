@@ -1,7 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :talent, foreign_key: :user_id
   has_many_attached :images do |attachable|
+    attachable.variant :preview, resize_to_limit: [450, 450]
     attachable.variant :thumb, resize_to_limit: [300, 300]
+    attachable.variant :sm_thumb, resize_to_limit: [80, 80]
   end
 
   has_one_attached :video do |attachable|

@@ -1,0 +1,21 @@
+<div data-controller="thumbnail">
+  <div class="product-thumbnail" data-thumbnail-target="thumbnails">
+    <% products.each do |product| %>
+      <div 
+        class="product-thumbnail__item" 
+        data-action="click->thumbnail#showProduct"
+        data-product-path="<%= product_path(product.id) %>" 
+      >
+        <div class="product-thumbnail__item__details">
+          <h4 class="product-thumbnail__item__details__title"><%= truncate(product.name.titleize, length: 25, omission: '...' ) %></h4>
+          <p  class="product-thumbnail__item__details__desc"><%= truncate(product.description, length: 100, omission: '...') %></p>
+        </div>
+        <div class="product-thumbnail__item--thumb" style="background: url('<%= url_for(product.images.last.variant(:thumb)) %>')" >
+        </div>
+        <div class="product-thumbnail__item__details__talent-badge">
+          <%= render partial: "shared/talent_badge", locals: { talent: product.talent } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

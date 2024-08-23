@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-admin = AdminUser.create!(email: 'dev@reinteractive.io', password: 'ABC12abc', password_confirmation: 'ABC12abc') if Rails.env.development?
+admin = AdminUser.create!(email: 'dev@creativeturtles.io', password: 'ABC12abc', password_confirmation: 'ABC12abc')
 
 6.times do
   sleep 1

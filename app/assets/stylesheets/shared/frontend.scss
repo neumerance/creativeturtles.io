@@ -1,5 +1,5 @@
-body {
-  background: #FFFDF1;
+body, html {
+  background: #FFFDF1 !important;
 }
 
 .frontend-navbar {
@@ -33,4 +33,8 @@ body {
       }
     }
   }
+}
+.divider {
+  border: .5px solid #DDDDDD;
+  width: 100%;
 }

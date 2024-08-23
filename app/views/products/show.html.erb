@@ -1,0 +1,41 @@
+<div class="container product-page" data-controller="thumbnail">
+  <div class="product-page__thumbnail-nav">
+    <% @product.images.each do |image| %>
+      <a 
+        class="product-page__thumbnail-nav__image"
+        href="javascript:void(0)"
+        data-action="click->thumbnail#selectThumbnail"
+        data-sm-thumbnail-path="<%= url_for(image.variant(:sm_thumb)) %>"
+        data-preview-url="<%= url_for(image.variant(:preview)) %>"
+      >
+        <%= image_tag url_for(image.variant(:preview)) %>
+      </a>
+    <% end %>
+  </div>
+  <div class="product-page__thumbnail-preview">
+    <img 
+      class="product-page__thumbnail-preview__img" 
+      src="<%= url_for(@product.images.first.variant(:thumb)) %>" 
+      data-thumbnail-target="preview"
+    />
+  </div>
+  <div class="product-page__thumbnail-description-container">
+    <h1 class="product-page__thumbnail-description-container__product-title"><%= @product.name.titleize %></h1>
+    <div class="product-page__thumbnail-description-container__actions">
+      <a class="mr-3 has-text-danger"><i class="fa-solid fa-heart mr-1"></i>24.4K</a>
+      <a class="mr-3 has-text-info"><i class="fa-solid fa-share mr-1"></i>500</a>
+      <a class="mr-3"><i class="fa-solid fa-thumbs-down mr-1"></i>4</a>
+    </div>
+    <p class="product-page__thumbnail-description-container__product-description"><%= @product.description %></p>
+  </div>
+  <div class="product-page__thumbnail-buy-container">
+    <div class="product-page__thumbnail-buy-container__buy-now">
+      <h3 class="product-page__thumbnail-buy-container__buy-now__title">One time purchase</h3>
+      <h2 class="product-page__thumbnail-buy-container__buy-now__price">$<%= @product.price %> USD</h2>
+      <div class="product-page__thumbnail-buy-container__buy-now__divider divider"></div>
+      <%= button_tag class: "product-page__thumbnail-buy-container__buy-now__buy-cta button is-large is-fullwidth" do %>
+        <span class="mr-1">Buy Now</span><i class="fa-solid fa-angle-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 .product-thumbnail {
   width: 1280px;
+  cursor: pointer;
 
   &:after {
     content: '';
@@ -52,7 +53,7 @@
       opacity: 0;
       transform: translateY(-20px);
       transition: opacity 0.3s ease, transform 0.3s ease;
-      background-color: rgba(0, 0, 0, 0.5); // Optional: Add a semi-transparent background for better readability
+      background-color: rgba(0, 0, 0, 0.5);
 
       &__title {
         color: #FFFFFF;
@@ -65,6 +66,13 @@
       &__desc {
         font-weight: 400;
         font-size: 1em;
+      }
+
+      &__talent-badge {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
       }
     }
   }
