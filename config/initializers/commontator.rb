@@ -32,7 +32,7 @@ Commontator.configure do |config|
   # Arguments: a user (acts_as_commontator)
   # Returns: the user's name (String)
   # Default: ->(user) { I18n.t('commontator.anonymous') } (all users are anonymous)
-  config.user_name_proc = ->(user) { I18n.t('commontator.anonymous') }
+  config.user_name_proc = ->(user) { user.handle }
 
   # user_link_proc
   # Type: Proc
@@ -295,5 +295,5 @@ Commontator.configure do |config|
   #   false (no mentions)
   #   true  (mentions enabled)
   # Default: false
-  config.mentions_enabled = false
+  config.mentions_enabled = true
 end
