@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "landing_pages#homepage"
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index]
+  get ":slug" => "products#show", as: :product
 end

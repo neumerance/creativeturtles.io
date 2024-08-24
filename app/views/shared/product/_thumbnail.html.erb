@@ -4,7 +4,7 @@
       <div 
         class="product-thumbnail__item" 
         data-action="click->thumbnail#showProduct"
-        data-product-path="<%= product_path(product.id) %>" 
+        data-product-path="<%= product_path(product.slug) %>" 
       >
         <div class="product-thumbnail__item__details">
           <h4 class="product-thumbnail__item__details__title"><%= truncate(product.name.titleize, length: 25, omission: '...' ) %></h4>

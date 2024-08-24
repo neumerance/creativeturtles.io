@@ -4,6 +4,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.joins(:talent).find(params[:id])
+    @product = Product.joins(:talent).find_by(slug: params[:slug])
   end
 end
