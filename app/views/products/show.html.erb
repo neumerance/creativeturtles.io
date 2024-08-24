@@ -4,7 +4,7 @@
       <a 
         class="product-page__thumbnail-nav__image"
         href="javascript:void(0)"
-        data-action="click->thumbnail#selectThumbnail"
+        data-action="mouseenter->thumbnail#selectThumbnail"
         data-sm-thumbnail-path="<%= url_for(image.variant(:sm_thumb)) %>"
         data-preview-url="<%= url_for(image.variant(:preview)) %>"
       >
@@ -21,13 +21,13 @@
   </div>
   <div class="product-page__description-container">
     <div class="product-page__author-container">
-      <span class="product-page__author-container__label">Designed by</span>
+      <span class="product-page__author-container__label">Product by</span>
       <div class="product-page__author-container__author">
         <div class="product-page__author-container__author__photo">
           <%= image_tag url_for(@product.talent.photo.variant(:thumb)) %>
         </div>
         <div class="product-page__author-container__author__details">
-          <span class="product-page__author-container__author__details__name"><%= truncate(@product.talent.full_name, length: 15, omission: '...' ) %></span>
+          <span class="product-page__author-container__author__details__name"><%= truncate(@product.talent.full_name, length: 20, omission: '...' ) %></span>
           <div class="product-page__author-container__author__details__ratings">
             <div class="product-page__author-container__author__details__stars">
               <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
@@ -58,9 +58,10 @@
   <div class="product-page__buy-container">
     <div class="product-page__buy-container__buy-now">
       <h3 class="product-page__buy-container__buy-now__title">One time purchase</h3>
-      <h2 class="product-page__buy-container__buy-now__price">$<%= @product.price %> USD</h2>
+      <h2 class="product-page__buy-container__buy-now__price">$ <%= @product.price %> <span class="product-page__buy-container__buy-now__price-currency">USD</scan></h2>
       <div class="product-page__buy-container__buy-now__divider divider"></div>
-      <%= button_tag class: "product-page__buy-container__buy-now__buy-cta button is-large is-fullwidth" do %>
+      <%= link_to "Apply discount code", "javascript:void(0)", class: "product-page__buy-container__buy-now__apply-discount-cta " %>
+      <%= button_tag class: "product-page__buy-container__buy-now__buy-cta button is-large is-fullwidth is-rounded" do %>
         <span class="mr-1">Buy Now</span><i class="fa-solid fa-angle-right"></i>
       <% end %>
     </div>

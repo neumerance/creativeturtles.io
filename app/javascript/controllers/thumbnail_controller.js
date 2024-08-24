@@ -10,6 +10,7 @@ export default class extends Controller {
       columnWidth: 242,
       gutter: 10,
       fitWidth: true,
+      horizontalOrder: true,
     });
   }
 

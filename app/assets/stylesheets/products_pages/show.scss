@@ -43,7 +43,8 @@
     margin: 0px 40px;
 
     &__product-title {
-      font-size: 2.4em;
+      font-family: "Satoshi-Bold";
+      font-size: 1.6em;
       margin-bottom: 10px;
     }
     &__actions {
@@ -55,7 +56,8 @@
     }
     &__product-description {
       margin-bottom: 10px;
-      font-size: 1.2em
+      font-size: 1.2em;
+      color: #000000;
     }
   }
   &__author-container {
@@ -127,13 +129,25 @@
         margin-bottom: 40px;
       }
       &__price {
-        font-size: 2em;
-        font-weight: 500;
+        font-size: 3em;
         color: #000000;
         text-align: center;
+        font-family: "Satoshi-Light";
+
+        &-currency {
+          color: #CDCDCD;
+          font-size: .4em;
+        }
       }
       &__divider {
         margin: 40px 0;
+      }
+      &__apply-discount-cta {
+        display: block;
+        color: #ff922b !important;
+        font-weight: 300;
+        margin-bottom: 40px;
+        text-decoration: none !important;
       }
       &__buy-cta {
         background: #ff922b !important;
