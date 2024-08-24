@@ -9,6 +9,9 @@
     <h1 class="product-page__description-container__product-title"><%= @product.name.titleize %></h1>
     <%= render partial: "products/actions", locals: { product: @product } %>
     <p class="product-page__description-container__product-description"><%= @product.description %></p>
+    <div class="product-page__comments">
+      <%= commontator_thread(@product) %>
+    </div>
   </div>
   <div class="product-page__buy-container">
     <div class="product-page__buy-container__buy-now">

@@ -157,4 +157,12 @@
       }
     }
   }
+  &__comments {
+    &__show-comment-cta  {
+      text-decoration: none !important;
+    }
+    &__hide-comment-cta {
+      text-decoration: none !important;
+    }
+  }
 }

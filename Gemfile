@@ -79,3 +79,9 @@ gem "devise", "~> 4.9"
 gem 'dotenv'
 gem 'country_select', '~> 8.0'
 gem 'aws-sdk-s3', '~> 1.0'
+
+# for commentable capability
+gem 'commontator'
+gem 'jquery-rails'
+
+gem 'will_paginate'

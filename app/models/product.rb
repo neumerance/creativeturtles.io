@@ -14,6 +14,8 @@ class Product < ApplicationRecord
   before_validation :ensure_slug
   validates :slug, presence: true
   enum :product_type, { digital: 0, physical: 1 }
+  
+  acts_as_commontable dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     ["name", "slug"]
