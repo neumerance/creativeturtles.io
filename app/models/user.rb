@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   enum :user_type, { talent: 1, client: 2 }
 
+  acts_as_commontator
+
   def self.ransackable_attributes(auth_object = nil)
     ["email"]
   end

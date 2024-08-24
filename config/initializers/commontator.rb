@@ -98,7 +98,7 @@ Commontator.configure do |config|
   #
   # Default: ->(current_user, query) { current_user.class.where('username LIKE ?', "#{query}%") }
   config.user_mentions_proc = ->(current_user, thread, query) do
-    current_user.class.where('username LIKE ?', "#{query}%")
+    current_user.class.where('handle LIKE ?', "#{query}%")
   end
 
 
@@ -295,10 +295,5 @@ Commontator.configure do |config|
   #   false (no mentions)
   #   true  (mentions enabled)
   # Default: false
-  config.mentions_enabled = true
-  Commontator.configure do |config|
-    config.user_mentions_proc = ->(current_user, thread, query) {
-      User.where('username LIKE ?', "%#{query}%").limit(10)
-    }
-  end
+  config.mentions_enabled = false
 end
