@@ -1,58 +1,13 @@
 <div class="container product-page" data-controller="thumbnail">
-  <div class="product-page__thumbnail-nav">
-    <% @product.images.each do |image| %>
-      <a 
-        class="product-page__thumbnail-nav__image"
-        href="javascript:void(0)"
-        data-action="mouseenter->thumbnail#selectThumbnail"
-        data-sm-thumbnail-path="<%= url_for(image.variant(:sm_thumb)) %>"
-        data-preview-url="<%= url_for(image.variant(:preview)) %>"
-      >
-        <%= image_tag url_for(image.variant(:preview)) %>
-      </a>
-    <% end %>
-  </div>
-  <div class="product-page__thumbnail-preview">
-    <img 
-      class="product-page__thumbnail-preview__img" 
-      src="<%= url_for(@product.images.first.variant(:thumb)) %>" 
-      data-thumbnail-target="preview"
-    />
-  </div>
+  <%= render partial: "products/thumbnail_nav", locals: { product: @product } %>
+  <%= render partial: "products/thumbnail_preview", locals: { product: @product } %>
   <div class="product-page__description-container">
     <div class="product-page__author-container">
       <span class="product-page__author-container__label">Product by</span>
-      <div class="product-page__author-container__author">
-        <div class="product-page__author-container__author__photo">
-          <%= image_tag url_for(@product.talent.photo.variant(:thumb)) %>
-        </div>
-        <div class="product-page__author-container__author__details">
-          <span class="product-page__author-container__author__details__name"><%= truncate(@product.talent.full_name, length: 20, omission: '...' ) %></span>
-          <div class="product-page__author-container__author__details__ratings">
-            <div class="product-page__author-container__author__details__stars">
-              <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
-              <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
-              <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
-              <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <div class="product-page__author-container__author__details__badges">
-              <span class="tag is-rounded is-info"><i class="fa-regular fa-circle-check"></i>Verified</span>
-              <span class="tag is-rounded is-info"><i class="fa-solid fa-medal"></i>Top Talent</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-page__author-container__author__actions">
-          <a class="product-page__author-container__author__actions__message has-text-info"><i class="fa-regular fa-message"></i> message <%= @product.talent.first_name.titleize %></a>
-        </div>
-      </div>
+      <%= render partial: "products/author", locals: { product: @product } %>
     </div>
     <h1 class="product-page__description-container__product-title"><%= @product.name.titleize %></h1>
-    <div class="product-page__description-container__actions">
-      <a class="mr-3 has-text-danger"><i class="fa-solid fa-heart mr-1"></i>24.4K</a>
-      <a class="mr-3 has-text-info"><i class="fa-solid fa-share mr-1"></i>500</a>
-      <a class="mr-3"><i class="fa-solid fa-thumbs-down mr-1"></i>4</a>
-    </div>
+    <%= render partial: "products/actions", locals: { product: @product } %>
     <p class="product-page__description-container__product-description"><%= @product.description %></p>
   </div>
   <div class="product-page__buy-container">

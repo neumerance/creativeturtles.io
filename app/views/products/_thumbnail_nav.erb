@@ -1,0 +1,13 @@
+<div class="product-page__thumbnail-nav">
+  <% product.images.each do |image| %>
+    <a 
+      class="product-page__thumbnail-nav__image"
+      href="javascript:void(0)"
+      data-action="mouseenter->thumbnail#selectThumbnail"
+      data-sm-thumbnail-path="<%= url_for(image.variant(:sm_thumb)) %>"
+      data-preview-url="<%= url_for(image.variant(:preview)) %>"
+    >
+      <%= image_tag url_for(image.variant(:preview)) %>
+    </a>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="product-page__author-container__author">
+  <div class="product-page__author-container__author__photo">
+    <%= image_tag url_for(product.talent.photo.variant(:thumb)) %>
+  </div>
+  <div class="product-page__author-container__author__details">
+    <span class="product-page__author-container__author__details__name"><%= truncate(product.talent.full_name, length: 20, omission: '...' ) %></span>
+    <div class="product-page__author-container__author__details__ratings">
+      <div class="product-page__author-container__author__details__stars">
+        <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
+        <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
+        <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
+        <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="product-page__author-container__author__details__badges">
+        <span class="tag is-rounded is-info"><i class="fa-regular fa-circle-check"></i>Verified</span>
+        <span class="tag is-rounded is-info"><i class="fa-solid fa-medal"></i>Top Talent</span>
+      </div>
+    </div>
+  </div>
+  <div class="product-page__author-container__author__actions">
+    <a class="product-page__author-container__author__actions__message has-text-info"><i class="fa-regular fa-message"></i> message <%= product.talent.first_name.titleize %></a>
+  </div>
+</div>
