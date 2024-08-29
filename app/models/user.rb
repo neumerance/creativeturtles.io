@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum :user_type, { talent: 1, client: 2 }
+  before_validation :define_handle
+
+  has_one_attached :photo do |attachable|
+    attachable.variant :thumb, resize_to_limit: [150, 150]
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     ["email"]
@@ -16,5 +21,13 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def define_handle
+    return unless self.handle.present?
+
+    self.handle = self.handle.parameterize.gsub("_", ".")
   end
 end

@@ -3,6 +3,34 @@
     &-item {
       text-decoration: none;
       color: #000000;
+      margin-right: 2em;
+
+      &__dashboard-btn {
+        display: block;
+
+        button {
+          background: #ff922b;
+          border: 1px solid #ff922b;
+          color: #FFFFFF;
+          text-shadow: none;
+          font-weight: 800;
+          padding: 5px 10px !important;
+
+          &:hover {
+            background: #FFFFFF;
+            border: 1px solid #ff922b;
+            color: #ff922b;
+          }
+
+          img {
+            margin-right: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #dddddd;
+          }
+        }
+      }
     }
   }
 }
