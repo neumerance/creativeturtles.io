@@ -1,0 +1,7 @@
+<div class="product-page__author-container">
+  <span class="product-page__author-container__label">Product by</span>
+  <%= render partial: "products/show/author", locals: { product: product } %>
+</div>
+<h1 class="product-page__description-container__product-title"><%= product.name.titleize %></h1>
+<%= render partial: "products/show/actions", locals: { product: product } %>
+<p class="product-page__description-container__product-description"><%= product.description %></p>

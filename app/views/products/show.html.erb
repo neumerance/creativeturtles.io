@@ -1,17 +1,13 @@
 <div class="container product-page" data-controller="thumbnail">
-  <%= render partial: "products/thumbnail_nav", locals: { product: @product } %>
-  <%= render partial: "products/thumbnail_preview", locals: { product: @product } %>
-  <div class="product-page__description-container">
-    <div class="product-page__author-container">
-      <span class="product-page__author-container__label">Product by</span>
-      <%= render partial: "products/author", locals: { product: @product } %>
+  <div class="product-page__product-container context-box">
+    <%= render partial: "products/show/thumbnail_nav", locals: { product: @product } %>
+    <%= render partial: "products/show/thumbnail_preview", locals: { product: @product } %>
+    <div class="product-page__description-container">
+      <%= render partial: "products/show/product_description", locals: { product: @product } %>
     </div>
-    <h1 class="product-page__description-container__product-title"><%= @product.name.titleize %></h1>
-    <%= render partial: "products/actions", locals: { product: @product } %>
-    <p class="product-page__description-container__product-description"><%= @product.description %></p>
   </div>
   <div class="product-page__buy-container">
-    <div class="product-page__buy-container__buy-now">
+    <div class="product-page__buy-container__buy-now context-box">
       <h3 class="product-page__buy-container__buy-now__title">One time purchase</h3>
       <h2 class="product-page__buy-container__buy-now__price">$ <%= @product.price %> <span class="product-page__buy-container__buy-now__price-currency">USD</scan></h2>
       <div class="product-page__buy-container__buy-now__divider divider"></div>
