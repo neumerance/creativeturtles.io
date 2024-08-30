@@ -25,8 +25,38 @@ services:
     environment:
       RAILS_ENV: development
       DB_HOST: db
+      HOST_NAME: "0.0.0.0:3000"
     stdin_open: true
     tty: true
+
+  ws:
+    image: anycable/anycable-go:1.5
+    ports:
+      - '8080:8080'
+      - '8090:8090'
+    environment:
+      ANYCABLE_HOST: "0.0.0.0"
+      ANYCABLE_BROADCAST_ADAPTER: http
+      ANYCABLE_RPC_HOST: anycable:50051
+      ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
+
+  anycable:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bundle exec anycable
+    volumes:
+      - .:/app
+    environment:
+      RAILS_ENV: development
+      DB_HOST: db
+      ANYCABLE_RPC_HOST: 0.0.0.0:50051
+      HOST_NAME: "0.0.0.0:3000"
+    ports:
+      - '50051:50051'
+    depends_on:
+      - db
+      - ws
 
 volumes:
   creativeturtles_io_dev_data:
