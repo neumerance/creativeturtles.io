@@ -19,6 +19,8 @@ services:
       args:
         SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     command: bundle exec puma -C config/puma.rb
+    ports:
+      - "3000:3000"
     depends_on:
       - db
     environment:
@@ -27,6 +29,7 @@ services:
       LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
       DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      HOST_NAME: ${HOST_NAME}
     networks:
       - backend
 
@@ -44,6 +47,38 @@ services:
     networks:
       - backend
 
+  ws:
+    image: anycable/anycable-go:1.5
+    ports:
+      - '8080:8080'
+      - '8090'
+    environment:
+      ANYCABLE_HOST: "0.0.0.0"
+      ANYCABLE_BROADCAST_ADAPTER: http
+      ANYCABLE_RPC_HOST: anycable:50051
+      ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
+
+  anycable:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    command: bundle exec anycable
+    environment:
+      RAILS_ENV: production
+      LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
+      LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
+      DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      ANYCABLE_RPC_HOST: 0.0.0.0:50051
+      HOST_NAME: ${HOST_NAME}
+    ports:
+      - '50051'
+    depends_on:
+      - db
+      - ws
+        
 volumes:
   creativeturtles_io_prod_data:
 

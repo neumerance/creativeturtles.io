@@ -80,3 +80,4 @@ gem 'dotenv'
 gem 'country_select', '~> 8.0'
 gem 'aws-sdk-s3', '~> 1.0'
 gem 'kaminari'
+gem "anycable-rails", "~> 1.5"
