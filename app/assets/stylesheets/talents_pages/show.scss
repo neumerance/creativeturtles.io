@@ -114,6 +114,7 @@
       &__title {
         font-weight: 400;
         font-size: 2em;
+        margin-bottom: 10px;
       }
       &__container  {
         margin-bottom: 10px;
@@ -121,6 +122,10 @@
         border: .5px solid #DDDDDD;
         border-radius: 10px;
         padding: 1em;
+      }
+      &__headline {
+        margin-bottom: 30px;
+        font-style: italic;
       }
     }
     &__contacts {
@@ -141,6 +146,7 @@
 
       &__handle{
         color: #cdcdcd;
+        text-decoration: none !important;
 
         &-link {
           margin-right: 5px;

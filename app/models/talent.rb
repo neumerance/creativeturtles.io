@@ -1,6 +1,8 @@
 class Talent < User
   default_scope { where(user_type: :talent) }
 
+  has_many :products, foreign_key: :user_id
+
   def self.ransackable_attributes(auth_object = nil)
     ["email", "handle", "first_name", "last_name", "country"]
   end

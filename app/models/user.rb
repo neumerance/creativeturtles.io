@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo do |attachable|
     attachable.variant :thumb, resize_to_limit: [150, 150]
+    attachable.variant :medium, resize_to_limit: [220, 220]
   end
 
   def self.ransackable_attributes(auth_object = nil)
