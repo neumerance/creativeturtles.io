@@ -1,27 +1,14 @@
 <%= content_for :header do %>
-  <div class="hero-banner">
-    <div class="hero-banner__office">
-      <h1 class="hero-banner__title hero-banner__title--main gradient-text">
-        All Your Creative Tools in One Place!
-      </h1>
-      <h2 class="hero-banner__title hero-banner__title--sub">
-        Top-Quality Digital Products, Ready to Go
-      </h2>
-    </div>
-    <div class="hero-banner__panelist">
-    </div>
-  </div>
+  <%= render partial: "shared/hero_banner" %>
 <% end %>
-<div class="container">
-  <div class="search">
-    <div class="control has-icons-left has-icons-right">
-      <input class="input is-large is-rounded" type="email" placeholder="How can we help with what you're looking for?" />
-      <span class="icon is-medium is-right">
-        <i class="fa-solid fa-wand-sparkles"></i>
-      </span>
-    </div>
+<div class="search">
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-large is-rounded" type="email" placeholder="How can we help with what you're looking for?" />
+    <span class="icon is-medium is-right">
+      <i class="fa-solid fa-wand-sparkles"></i>
+    </span>
   </div>
-  <div class="thumbnail-container">
-    <%= render partial: "shared/product/thumbnail", locals: { products: @products } %>
-  </div>
+</div>
+<div class="thumbnail-container">
+  <%= render partial: "shared/product/thumbnail", locals: { products: @products } %>
 </div>

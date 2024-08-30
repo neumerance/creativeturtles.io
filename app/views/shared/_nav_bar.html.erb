@@ -16,10 +16,6 @@
 
       <div class="navbar-menu">
         <div class="navbar-end">
-          <%= link_to "Products", products_path, class: "navbar-item has-text-weight-semibold" %>
-          <a class="navbar-item has-text-weight-semibold">
-            Services
-          </a>
           <% if user_signed_in? && current_user.talent? %>
             <%= link_to talent_path(current_user.handle), class: "navbar-item__dashboard-btn" do %>
               <button class="button is-info is-medium is-rounded">
@@ -27,6 +23,10 @@
               </button>
             <% end %>
           <% else %>
+            <%= link_to "Products", products_path, class: "navbar-item has-text-weight-semibold" %>
+            <a class="navbar-item has-text-weight-semibold">
+              Services
+            </a>
             <a class="navbar-item has-text-weight-semibold">
               Join Us
             </a>
