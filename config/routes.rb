@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index]
   resources :talents, only: [:index]
+  resources :recommendations, only: [:index]
 
   get "/:slug" => "products#show", as: :product
   get "/talents/:handle" => "talents#show", as: :talent

@@ -1,22 +1,10 @@
-<div class="profile__content__showcase__container recommendations">
-  <% if recommendations.present? %>
-    <% recommendations.each do |commendation| %>
-      <div class="recommendations__commendation">
-        <div class="recommendations__commendation__header">
-          <h4 class="recommendations__commendation__title"><%= commendation.user.full_name.titleize %></h4>
-          <span class="recommendations__commendation__date has-text-dark"><%= time_ago_in_words(commendation.created_at) %> ago</span>
-        </div>
-        <div class="recommendations__commendation__stars">
-          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
-          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
-          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
-          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
-          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
-        </div>
-        <p class="recommendations__commendation__message has-text-dark"><%= commendation.message %></p>
-      </div>
-    <% end %>
-  <% else %>
+<div data-controller="recommendation" >
+  <div 
+    class="profile__content__showcase__container"
+    data-recommendation-target="recommendations" 
+    data-page="1"
+    data-commendable-type="User"
+    data-commendable-id="<%= talent_id %>">
     <blockquote>No recommendation yet</blockquote>
-  <% end %>
+  </div>
 </div>

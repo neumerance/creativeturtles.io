@@ -12,9 +12,11 @@
         </div>
         <div class="product-thumbnail__item--thumb" style="background: url('<%= url_for(product.images.last.variant(:thumb)) %>')" >
         </div>
-        <div class="product-thumbnail__item__details__talent-badge">
-          <%= render partial: "shared/talent_badge", locals: { talent: product.talent } %>
-        </div>
+        <% if defined?(show_talent_badge) && show_talent_badge  %>
+          <div class="product-thumbnail__item__details__talent-badge">
+            <%= render partial: "shared/talent_badge", locals: { talent: product.talent } %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

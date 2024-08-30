@@ -1,0 +1,34 @@
+<div class="recommendations">
+  <% if @recommendations.present? %>
+    <% @recommendations.each do |commendation| %>
+      <div class="recommendations__commendation">
+        <div class="recommendations__commendation__header">
+          <h4 class="recommendations__commendation__title"><%= commendation.user.full_name.titleize %></h4>
+          <span class="recommendations__commendation__date has-text-dark"><%= time_ago_in_words(commendation.created_at) %> ago</span>
+        </div>
+        <div class="recommendations__commendation__stars">
+          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
+          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
+          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
+          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
+          <i class="recommendations__commendation__stars--active fa-solid fa-star"></i>
+        </div>
+        <p class="recommendations__commendation__message has-text-dark"><%= commendation.message %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <blockquote>No recommendation yet</blockquote>
+  <% end %>
+  <div class="recommendations__commendation__pagination">
+    <% if @recommendations.prev_page.present? %>
+      <a href="javascript:void(0)" data-action="click->recommendation#loadMore" data-page="<%= @recommendations.prev_page %>">
+        <i class="fa-solid fa-angles-left"></i> See previous
+      </a>
+    <% end %>
+    <% if @recommendations.next_page.present? %>
+      <a href="javascript:void(0)" data-action="click->recommendation#loadMore" data-page="<%= @recommendations.next_page %>">
+        See more <i class="fa-solid fa-angles-right"></i>
+      </a>
+    <% end %>
+  </div>
+</div>

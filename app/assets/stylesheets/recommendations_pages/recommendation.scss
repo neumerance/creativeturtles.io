@@ -26,5 +26,14 @@
         color: #ffca00;
       }
     }
+    
+    &__pagination {
+      display: flex;
+      justify-content: space-between;
+      a {
+        text-decoration: none;
+        color: #ff922b;
+      }
+    }
   }
 }
