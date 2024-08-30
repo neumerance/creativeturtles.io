@@ -16,9 +16,13 @@ end
   sleep 1
   talent = FactoryBot.create(:talent)
   3.times do
+    sleep 1
     product = FactoryBot.create(:product, talent: talent, product_type: :digital)
     FactoryBot.create(:recommendation, commendable: product, user: clients.sample)
   end
 
-  FactoryBot.create(:recommendation, commendable: talent, user: clients.sample)
+  3.times do
+    sleep 1
+    FactoryBot.create(:recommendation, commendable: talent, user: clients.sample)
+  end
 end

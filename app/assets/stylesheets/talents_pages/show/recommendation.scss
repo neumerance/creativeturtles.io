@@ -1,0 +1,30 @@
+.recommendations {
+  &__commendation {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #CDCDCD;
+    margin-bottom: 10px;
+
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 10px;
+      margin-bottom: 0px;
+    }
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__title {
+      font-size: 1.4em;
+      font-weight: 400;
+    }
+    &__date {
+      font-size: .8em;
+    }
+    &__stars {
+      &--active {
+        color: #ffca00;
+      }
+    }
+  }
+}
