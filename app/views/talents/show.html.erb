@@ -8,7 +8,7 @@
     <%= render partial: "talents/headline", locals: { headline: @talent.about }  %>
     <%= render partial: "talents/about", locals: { about: @talent.about } %>
     <%= render partial: "talents/my_work", locals: { products: @talent.products } %>
-    <%= render partial: "talents/recommendations" %>
+    <%= render partial: "talents/recommendations", locals: { recommendations: @talent.recommendations } %>
   </div>
   <%= render partial: "talents/contacts", locals: { } %>
 </div>

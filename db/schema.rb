@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_18_170443) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_30_140001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,49 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_170443) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "commontator_comments", force: :cascade do |t|
+    t.bigint "thread_id", null: false
+    t.string "creator_type", null: false
+    t.bigint "creator_id", null: false
+    t.string "editor_type"
+    t.bigint "editor_id"
+    t.text "body", null: false
+    t.datetime "deleted_at", precision: nil
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "parent_id"
+    t.index ["cached_votes_down"], name: "index_commontator_comments_on_cached_votes_down"
+    t.index ["cached_votes_up"], name: "index_commontator_comments_on_cached_votes_up"
+    t.index ["creator_id", "creator_type", "thread_id"], name: "index_commontator_comments_on_c_id_and_c_type_and_t_id"
+    t.index ["editor_type", "editor_id"], name: "index_commontator_comments_on_editor_type_and_editor_id"
+    t.index ["parent_id"], name: "index_commontator_comments_on_parent_id"
+    t.index ["thread_id", "created_at"], name: "index_commontator_comments_on_thread_id_and_created_at"
+  end
+
+  create_table "commontator_subscriptions", force: :cascade do |t|
+    t.bigint "thread_id", null: false
+    t.string "subscriber_type", null: false
+    t.bigint "subscriber_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscriber_id", "subscriber_type", "thread_id"], name: "index_commontator_subscriptions_on_s_id_and_s_type_and_t_id", unique: true
+    t.index ["thread_id"], name: "index_commontator_subscriptions_on_thread_id"
+  end
+
+  create_table "commontator_threads", force: :cascade do |t|
+    t.string "commontable_type"
+    t.bigint "commontable_id"
+    t.string "closer_type"
+    t.bigint "closer_id"
+    t.datetime "closed_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["closer_type", "closer_id"], name: "index_commontator_threads_on_closer_type_and_closer_id"
+    t.index ["commontable_type", "commontable_id"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
@@ -79,6 +122,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_170443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.text "message"
+    t.integer "ratings", default: 1
+    t.bigint "user_id"
+    t.string "commendable_type", null: false
+    t.bigint "commendable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commendable_type", "commendable_id"], name: "index_recommendations_on_commendable"
+    t.index ["user_id"], name: "index_recommendations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,4 +157,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_170443) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "commontator_comments", "commontator_comments", column: "parent_id", on_update: :restrict, on_delete: :cascade
+  add_foreign_key "commontator_comments", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "commontator_subscriptions", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
 end

@@ -1,0 +1,46 @@
+.profile {
+  &__cover {
+    height: 315px;
+    background: url("https://fastly.picsum.photos/id/566/1920/351.jpg?hmac=W3CMstQqsctVMqWGmBuo9enImhx2xx9RHhpu9dDreXk");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  &__photo__container {
+    height: 315px;
+    display: flex;
+    align-items: end;
+  }
+  &__photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 220px;
+    height: 220px;
+    margin-bottom: -182px;
+    margin-right: 20px;
+    position: relative;
+
+    img {
+      display: block;
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      border: 6px solid #FFFFFF;
+      object-fit: cover;
+    }
+
+    &__online-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #07c403;
+      position: absolute;
+      bottom: 35px;
+      right: 18px;
+      border: 2px solid #FFFFFF;
+    }
+  }
+}

@@ -1,3 +1,10 @@
 <div class="profile__content__showcase__container profile__content__showcase__recommendations">
-  <h3 class="profile__content__showcase__title">Recommendations</h3>
+  <% if recommendations.present? %>
+    <% recommendations.each do |recommendation| %>
+      <div class="profile__content__showcase__recommendations__commendation">
+      </div>
+    <% end %>
+  <% else %>
+    <blockquote>No recommendation yet</blockquote>
+  <% end %>
 </div>
