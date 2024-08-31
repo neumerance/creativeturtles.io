@@ -11,7 +11,14 @@ services:
       POSTGRES_DB: creativeturtles_io_development
       POSTGRES_HOST_AUTH_METHOD: trust
 
-  web:
+  redis:
+    image: redis:6.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_dev_data:/data
+
+  rails: &rails
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -19,21 +26,25 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    environment:
+      - '3000:3000'
+    environment: &rails_environment
       RAILS_ENV: development
       DB_HOST: db
-      HOST_NAME: "0.0.0.0:3000"
+      HOST_NAME: 0.0.0.0:3000
+      ANYCABLE_HTTP_BROADCAST_URL: http://ws:8090/_broadcast
+      REDIS_URL: redis://redis:6379/1
+      WEBSOCKET_URL: ws://ws:8080/cable
     stdin_open: true
     tty: true
+    depends_on: &rails_depends_on
+      anycable:
+        condition: service_started
 
   ws:
     image: anycable/anycable-go:1.5
     ports:
       - '8080:8080'
-      - '8090:8090'
+      - '8090'
     environment:
       ANYCABLE_HOST: "0.0.0.0"
       ANYCABLE_BROADCAST_ADAPTER: http
@@ -41,22 +52,17 @@ services:
       ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
 
   anycable:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    <<: *rails
     command: bundle exec anycable
-    volumes:
-      - .:/app
     environment:
-      RAILS_ENV: development
-      DB_HOST: db
+      <<: *rails_environment
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
-      HOST_NAME: "0.0.0.0:3000"
     ports:
-      - '50051:50051'
+      - '50051'
     depends_on:
-      - db
-      - ws
-
+      ws:
+        condition: service_started
+        
 volumes:
   creativeturtles_io_dev_data:
+  redis_dev_data:

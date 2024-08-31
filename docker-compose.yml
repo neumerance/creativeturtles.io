@@ -12,38 +12,40 @@ services:
     networks:
       - backend
 
-  web:
+  redis:
+    image: redis:6.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_prod_data:/data
+    networks:
+      - backend
+
+  rails: &rails
     build:
       context: .
       dockerfile: Dockerfile
       args:
         SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/app
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    environment:
+      - '3000:3000'
+    environment: &rails_environment
       RAILS_ENV: production
+      DB_HOST: db
+      ANYCABLE_HTTP_BROADCAST_URL: http://ws:8090/_broadcast
+      REDIS_URL: redis://redis:6379/1
+      WEBSOCKET_URL: ws://ws:8080/cable
       LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
       LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
       DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       HOST_NAME: ${HOST_NAME}
-    networks:
-      - backend
-
-  nginx:
-    image: nginx:latest
-    user: root
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - /etc/letsencrypt:/etc/letsencrypt
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - web
+    depends_on: &rails_depends_on
+      anycable:
+        condition: service_started
     networks:
       - backend
 
@@ -57,30 +59,40 @@ services:
       ANYCABLE_BROADCAST_ADAPTER: http
       ANYCABLE_RPC_HOST: anycable:50051
       ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
+    networks:
+      - backend
 
   anycable:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    <<: *rails
     command: bundle exec anycable
     environment:
-      RAILS_ENV: production
-      LINODE_ACCESS_KEY: ${LINODE_ACCESS_KEY}
-      LINODE_SECRET_KEY: ${LINODE_SECRET_KEY}
-      DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      <<: *rails_environment
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
-      HOST_NAME: ${HOST_NAME}
     ports:
       - '50051'
     depends_on:
-      - db
-      - ws
+      ws:
+        condition: service_started
+    networks:
+      - backend       
         
+  nginx:
+    image: nginx:latest
+    user: root
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - rails
+    networks:
+      - backend
+
 volumes:
   creativeturtles_io_prod_data:
+  redis_prod_data:
 
 networks:
   backend:
