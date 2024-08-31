@@ -6,4 +6,7 @@ import { createConsumer } from "@rails/actioncable"
 const currentUserMetaTag = document.querySelector('meta[name="current_user"]');
 const currentUserId = currentUserMetaTag ? currentUserMetaTag.getAttribute('content') : null;
 
-export default createConsumer(`ws://localhost:8080/cable?user_id=${currentUserId}`)
+const websocketUrlMetaTag = document.querySelector('meta[name="websocket_url"]');
+const websocketUrl = websocketUrlMetaTag ? websocketUrlMetaTag.getAttribute('content') : "ws://localhost:8080";
+
+export default createConsumer(`${websocketUrl}/cable?user_id=${currentUserId}`)

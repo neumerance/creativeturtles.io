@@ -35,4 +35,4 @@ test:
 
 production:
   <<: *default
-  websocket_url: ~
+  websocket_url: <%= ENV.fetch("PROD_WEBSOCKET_HOST") { "ws://localhost:8080/cable" } %>

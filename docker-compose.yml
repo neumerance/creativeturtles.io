@@ -43,6 +43,7 @@ services:
       DATABASE_URL: postgresql://creativeturtles_io:${DB_PASSWORD}@db:5432/creativeturtles_io_production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       HOST_NAME: ${HOST_NAME}
+      PROD_WEBSOCKET_HOST: ${PROD_WEBSOCKET_HOST}
     depends_on: &rails_depends_on
       anycable:
         condition: service_started

@@ -12,7 +12,9 @@
     <%= javascript_importmap_tags %>
     <% if current_user.present? %>
       <meta name="current_user" content="<%= current_user.id %>">
-      <meta name="websocket_url" content="<%= ENV['WEBSOCKET_URL'] %>">
+      <% if ENV["PROD_WEBSOCKET_HOST"] %>
+        <meta name="websocket_url" content="<%= ENV['PROD_WEBSOCKET_HOST'] %>">
+      <% end %>
     <% end %>
   </head>
 
