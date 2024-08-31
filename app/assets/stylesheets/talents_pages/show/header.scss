@@ -32,15 +32,10 @@
       object-fit: cover;
     }
 
-    &__online-indicator {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #07c403;
+    .online-indicator {
       position: absolute;
       bottom: 35px;
       right: 18px;
-      border: 2px solid #FFFFFF;
     }
   }
 }

@@ -1,0 +1,11 @@
+.online-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #CDCDCD;
+  border: 2px solid #FFFFFF;
+
+  &--online {
+    background: #07c403;
+  }
+}

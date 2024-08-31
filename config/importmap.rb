@@ -11,3 +11,5 @@ pin "ev-emitter" # @1.1.1
 pin "fizzy-ui-utils" # @2.0.7
 pin "get-size" # @2.0.3
 pin "outlayer" # @2.1.1
+pin "@rails/actioncable", to: "actioncable.esm.js"
+pin_all_from "app/javascript/channels", under: "channels"

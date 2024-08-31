@@ -2,7 +2,7 @@
   <div class="container profile__photo__container">
     <div class="profile__photo">
       <%= image_tag photo %>
-      <span class="profile__photo__online-indicator"></span>
+      <%= render partial: "shared/online-indicator", locals: { user: user } %>
     </div>
   </div>
 </div>

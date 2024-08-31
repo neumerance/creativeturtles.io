@@ -1,5 +1,5 @@
 <%= content_for :header do %>
-  <%= render partial: "talents/header", locals: { photo: @talent.photo.variant(:medium) } %>
+  <%= render partial: "talents/header", locals: { photo: @talent.photo.variant(:medium), user: @talent } %>
 <% end %>
 <%= render partial: "talents/name_section", locals: { name: @talent.full_name,  handle_link: "https://#{ENV["HOST_NAME"]}#{talent_path(@talent.handle)}" } %>
 <%= render partial: "talents/badges" %>

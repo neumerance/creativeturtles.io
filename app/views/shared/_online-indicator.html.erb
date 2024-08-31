@@ -1,0 +1,5 @@
+<% if user.online? %>
+  <span id="online-indicator-<%= user.id %>" class="online-indicator online-indicator--online"></span>
+<% else %>
+  <span id="online-indicator-<%= user.id %>" class="online-indicator"></span>
+<% end %>
