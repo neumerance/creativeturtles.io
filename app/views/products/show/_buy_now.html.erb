@@ -1,0 +1,9 @@
+<div class="product-page__buy-container__buy-now context-box">
+  <h3 class="product-page__buy-container__buy-now__title">One time purchase</h3>
+  <h2 class="product-page__buy-container__buy-now__price">$ <%= @product.price %> <span class="product-page__buy-container__buy-now__price-currency">USD</scan></h2>
+  <div class="product-page__buy-container__buy-now__divider divider"></div>
+  <%= link_to "Apply discount code", "javascript:void(0)", class: "product-page__buy-container__buy-now__apply-discount-cta " %>
+  <%= button_tag class: "product-page__buy-container__buy-now__buy-cta button is-large is-fullwidth is-rounded" do %>
+    <span class="mr-1">Buy Now</span><i class="fa-solid fa-angle-right"></i>
+  <% end %>
+</div>

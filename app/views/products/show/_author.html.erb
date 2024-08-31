@@ -3,7 +3,9 @@
     <%= image_tag url_for(product.talent.photo.variant(:thumb)) %>
   </div>
   <div class="product-page__author-container__author__details">
-    <span class="product-page__author-container__author__details__name"><%= truncate(product.talent.full_name, length: 20, omission: '...' ) %></span>
+    <div class="product-page__author-container__author__details__name has-text-dark">
+      <%= link_to truncate(product.talent.full_name, length: 20, omission: '...' ), talent_path(product.talent.handle) %>
+    </div>
     <div class="product-page__author-container__author__details__ratings">
       <div class="product-page__author-container__author__details__stars">
         <i class="fa-solid fa-star product-page__author-container__author__details__stars--active"></i>

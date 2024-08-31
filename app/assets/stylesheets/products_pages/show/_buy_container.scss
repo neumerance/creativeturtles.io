@@ -1,0 +1,40 @@
+.product-page {
+  &__buy-container {
+    &__buy-now {
+      width: 320px;
+
+      &__title {
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 40px;
+      }
+      &__price {
+        font-size: 3em;
+        color: #000000;
+        text-align: center;
+        font-family: "Satoshi-Light";
+
+        &-currency {
+          color: #CDCDCD;
+          font-size: .4em;
+        }
+      }
+      &__divider {
+        margin: 40px 0;
+      }
+      &__apply-discount-cta {
+        display: block;
+        color: #ff922b !important;
+        font-weight: 300;
+        margin-bottom: 40px;
+        text-decoration: none !important;
+      }
+      &__buy-cta {
+        background: #ff922b !important;
+        border: 0 !important;
+        color: #FFFFFF;
+        text-shadow: none;
+      }
+    }
+  }
+}
