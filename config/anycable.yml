@@ -11,17 +11,13 @@
 #
 default: &default
   # Turn on/off access logs ("Started..." and "Finished...")
-  access_logs_disabled: false
+  access_logs_disabled: true
   # Whether to enable gRPC level logging or not
-  log_grpc: false
+  log_grpc: true
   # Use Redis to broadcast messages to AnyCable server
   broadcast_adapter: redis
-  # You can use REDIS_URL env var to configure Redis URL.
-  # Localhost is used by default.
-  # redis_url: "redis://localhost:6379/1"
-  # Use the same channel name for WebSocket server, e.g.:
-  #   $ anycable-go --redis_channel="__anycable__"
-  # redis_channel: "__anycable__"
+  redis_url: <%= ENV.fetch("REDIS_URL") { "redis://redis:6379/1" } %>
+  redis_channel: __anycable__
 
 development:
   <<: *default

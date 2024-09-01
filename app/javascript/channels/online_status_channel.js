@@ -10,7 +10,7 @@ consumer.subscriptions.create("OnlineStatusChannel", {
   },
 
   received(data) {
-    console.log("receiving data", data.json);
+    console.log("receiving data", data);
     const userElement = document.getElementById(`online-indicator-${data.user_id}`);
     if (userElement) {
       if (data.status === 'online') {

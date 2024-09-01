@@ -2,7 +2,6 @@ development:
   adapter: <%= ENV.fetch("ACTION_CABLE_ADAPTER", "any_cable") %>
   broadcast_adapter: http
   websocket_url: <%= ENV.fetch("WEBSOCKET_URL") { "ws://localhost:8080/cable" } %>
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
 
 test:
   adapter: test
@@ -11,4 +10,4 @@ production:
   adapter: <%= ENV.fetch("ACTION_CABLE_ADAPTER", "any_cable") %>
   broadcast_adapter: http
   websocket_url: <%= ENV.fetch("WEBSOCKET_URL") { "ws://localhost:8080/cable" } %>
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+

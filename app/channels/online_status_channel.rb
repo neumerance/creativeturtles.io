@@ -1,5 +1,7 @@
 class OnlineStatusChannel < ApplicationCable::Channel
   def subscribed
+    stream_from "online_status_channel"
+    
     if current_user.present?
       current_user.update(online: true)
       broadcast_user_status(current_user, 'online')

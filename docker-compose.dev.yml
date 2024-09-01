@@ -46,10 +46,13 @@ services:
       - '8080:8080'
       - '8090'
     environment:
+      REDIS_URL: redis://redis:6379/1
       ANYCABLE_HOST: "0.0.0.0"
-      ANYCABLE_BROADCAST_ADAPTER: http
+      ANYCABLE_BROADCAST_ADAPTER: redis
       ANYCABLE_RPC_HOST: anycable:50051
       ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
+      ANYCABLE_REDIS_URL: redis://redis:6379/1 
+      ANYCABLE_REDIS_CHANNEL: __anycable__
 
   anycable:
     <<: *rails
@@ -57,6 +60,9 @@ services:
     environment:
       <<: *rails_environment
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
+      ANYCABLE_REDIS_URL: redis://redis:6379/1 
+      ANYCABLE_REDIS_CHANNEL: __anycable__
+      ANYCABLE_BROADCAST_ADAPTER: redis
     ports:
       - '50051'
     depends_on:

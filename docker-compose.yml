@@ -60,6 +60,8 @@ services:
       ANYCABLE_BROADCAST_ADAPTER: http
       ANYCABLE_RPC_HOST: anycable:50051
       ANYCABLE_DEBUG: ${ANYCABLE_DEBUG:-true}
+      ANYCABLE_REDIS_URL: redis://redis:6379/1 
+      ANYCABLE_REDIS_CHANNEL: __anycable__
     networks:
       - backend
 
@@ -69,6 +71,8 @@ services:
     environment:
       <<: *rails_environment
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
+      ANYCABLE_REDIS_URL: redis://redis:6379/1 
+      ANYCABLE_REDIS_CHANNEL: __anycable__
     ports:
       - '50051'
     depends_on:
