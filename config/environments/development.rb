@@ -75,8 +75,4 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  config.after_initialize do
-    config.action_cable.url = ActionCable.server.config.url = ENV.fetch("CABLE_URL", "ws://localhost:8082/cable")
-  end
 end

@@ -33,7 +33,7 @@ services:
       HOST_NAME: 0.0.0.0:3000
       ANYCABLE_HTTP_BROADCAST_URL: http://ws:8090/_broadcast
       REDIS_URL: redis://redis:6379/1
-      WEBSOCKET_URL: ws://ws:8080/cable
+      WEBSOCKET_URL: ws://localhost:8080/cable
     stdin_open: true
     tty: true
     depends_on: &rails_depends_on
