@@ -43,6 +43,7 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       HOST_NAME: ${HOST_NAME}
       WEBSOCKET_URL: ${WEBSOCKET_URL}
+      AUTH_SECRET: ${AUTH_SECRET}
     depends_on: &rails_depends_on
       anycable:
         condition: service_started
