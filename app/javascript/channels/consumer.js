@@ -9,4 +9,4 @@ const currentUserId = currentUserMetaTag ? currentUserMetaTag.getAttribute('cont
 const websocketUrlMetaTag = document.querySelector('meta[name="websocket_url"]');
 const websocketUrl = websocketUrlMetaTag ? websocketUrlMetaTag.getAttribute('content') : "ws://localhost:8080";
 
-export default createConsumer(`${websocketUrl}/cable?user_id=${currentUserId}`)
+export default createConsumer(`${websocketUrl}?user_id=${currentUserId}`)
