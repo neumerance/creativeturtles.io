@@ -4,10 +4,12 @@ class Talent < User
   has_many :products, foreign_key: :user_id
   has_many :recommendations, as: :commendable
 
+  validates :handle, uniqueness: true
+
   has_one_attached :cover_photo do |attachable|
-    attachable.variant :ultra, resize_to_limit: [1280, 720]
-    attachable.variant :desktop, resize_to_limit: [851, 315]
-    attachable.variant :mobile, resize_to_limit: [640, 360]
+    attachable.variant :ultra, resize_to_limit: [1280, 320]
+    attachable.variant :desktop, resize_to_limit: [851, 212]
+    attachable.variant :mobile, resize_to_limit: [640, 160]
   end
 
   def self.ransackable_attributes(auth_object = nil)

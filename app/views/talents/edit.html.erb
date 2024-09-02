@@ -1,0 +1,38 @@
+<div class="talent-form">
+  <div class="talent-form__form-container">
+    <div class="container" data-controller="dropzone">
+      <%= form_for @talent do %>
+        <div class="talent-form__form-container__field">
+          <h4 class="talent-form__form-container__title">Tell us about you</h4>
+          <div class="control talent-form__form-container__field__handle">
+            <span class="talent-form__form-container__field__handle__label">
+              <i class="fa-solid fa-cloud-bolt mr-2"></i> https://<%= ENV["HOST_NAME"] %>/
+            </span>
+            <input class="input is-medium" type="text" placeholder="handle.name">
+          </div>
+          <p class="help">This will be the address of your unique creativeturtles page</p>
+          <div class="control talent-form__form-container__field__full_name">
+            <input class="input is-medium" type="text" placeholder="Juan">
+            <input class="input is-medium" type="text" placeholder="Dela Cruz">
+          </div>
+        </div>
+        <div class="talent-form__form-container__field talent-form__form-container__field--photo">
+          <h4 class="talent-form__form-container__title">Select your best photo</h4>
+          <div data-upload-url="<%= upload_talent_path(id: @talent.id, field: :photo) %>" data-dropzone-target="photo" data-id="photoUploader">
+            <div class="dropzone dropzone__as-button" id="photoUploader">
+            </div>
+          </div>
+        </div>
+        <div class="talent-form__form-container__field talent-form__form-container__field">
+          <h4 class="talent-form__form-container__title">Selet your best cover photo</h4>
+          <div data-upload-url="<%= upload_talent_path(id: @talent.id, field: :cover_photo) %>" data-dropzone-target="coverPhoto" data-id="coverPhotoUploader">
+            <div class="dropzone dropzone__cover-photo" id="coverPhotoUploader">
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="talent-form__preview-container">
+  </div>
+</div>
