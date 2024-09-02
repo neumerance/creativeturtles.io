@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_02_061241) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_02_075113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,6 +136,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_061241) do
     t.index ["user_id"], name: "index_recommendations_on_user_id"
   end
 
+  create_table "user_preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "country"
+    t.string "currency"
+    t.string "language"
+    t.string "timezone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_preferences_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,13 +158,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_061241) do
     t.string "handle"
     t.string "first_name"
     t.string "last_name"
-    t.string "country"
     t.text "headline"
     t.text "about"
     t.integer "user_type", default: 1
     t.boolean "online"
     t.string "roles", default: [], array: true
-    t.string "currency", default: "USD"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

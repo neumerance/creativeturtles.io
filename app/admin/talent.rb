@@ -5,8 +5,7 @@ ActiveAdmin.register Talent do
                 :password, 
                 :password_confirmation, 
                 :first_name, 
-                :last_name, 
-                :country
+                :last_name
 
   filter :email
   filter :handle
@@ -30,7 +29,6 @@ ActiveAdmin.register Talent do
       f.input :last_name
       f.input :headline
       f.input :about
-      f.input :country
     end
 
     actions
@@ -47,7 +45,6 @@ ActiveAdmin.register Talent do
     column :handle
     column :first_name
     column :last_name
-    column :country
 
     actions
   end

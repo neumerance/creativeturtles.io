@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum :user_type, { talent: 1, client: 2 }
   before_validation :define_handle
 
+  has_one :user_preference
   has_one_attached :photo do |attachable|
     attachable.variant :thumb, resize_to_limit: [150, 150]
     attachable.variant :medium, resize_to_limit: [220, 220]
