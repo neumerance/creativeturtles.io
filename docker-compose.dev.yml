@@ -68,7 +68,13 @@ services:
     depends_on:
       ws:
         condition: service_started
-        
+    
+  rails_migration_runner:
+    <<: *rails
+    command: bundle exec rake db:migrate
+    ports:
+      - '9191:3000'
+      
 volumes:
   creativeturtles_io_dev_data:
   redis_dev_data:

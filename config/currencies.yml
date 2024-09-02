@@ -1,0 +1,35 @@
+currencies:
+  - name: United States Dollar
+    code: USD
+  - name: Euro
+    code: EUR
+  - name: Japanese Yen
+    code: JPY
+  - name: British Pound Sterling
+    code: GBP
+  - name: Australian Dollar
+    code: AUD
+  - name: Canadian Dollar
+    code: CAD
+  - name: Swiss Franc
+    code: CHF
+  - name: Chinese Yuan
+    code: CNY
+  - name: Indian Rupee
+    code: INR
+  - name: South Korean Won
+    code: KRW
+  - name: Mexican Peso
+    code: MXN
+  - name: Singapore Dollar
+    code: SGD
+  - name: Hong Kong Dollar
+    code: HKD
+  - name: Brazilian Real
+    code: BRL
+  - name: South African Rand
+    code: ZAR
+  - name: Russian Ruble
+    code: RUB
+  - name: Philippine Peso
+    code: PHP
