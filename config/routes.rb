@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root "landing_pages#homepage"
 
   resources :products, only: [:index]
-  resources :talents, only: [:index]
+  resources :talents, only: [:index, :edit]
   resources :recommendations, only: [:index]
 
   get "/products/:slug" => "products#show", as: :product

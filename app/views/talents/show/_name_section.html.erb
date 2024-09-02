@@ -1,7 +1,10 @@
 <div class="profile__author">
   <div class="container">
     <div class="profile__author__name">
-      <h1 class="profile__author__name-title"><%= name.titleize %></h1>
+      <h1 class="profile__author__name-title">
+        <%= name.titleize %>
+        <%= render partial: "talents/edit/edit_pencil", locals: { id: id } %>
+      </h1>
       <div class="profile__author__roles">
         <span>Social Media Content Creator</span>
         <span>Video Content Creator</span>
