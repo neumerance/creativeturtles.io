@@ -54,4 +54,7 @@ fi
 echo_info "Building and starting Docker containers..."
 $DOCKER_COMPOSE_CMD up --build -d
 
+echo_info "Running migration"
+$DOCKER_COMPOSE_CMD run --rm rails bundle exec rake db:migrate
+
 echo_info "Deployment completed successfully."
