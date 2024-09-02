@@ -103,6 +103,8 @@ services:
     command: bundle exec rake db:migrate
     ports:
       - '9191:3000'
+    environment:
+      <<: *rails_environment
     
 volumes:
   creativeturtles_io_prod_data:
