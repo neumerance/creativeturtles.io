@@ -18,6 +18,8 @@ services:
       - "6379:6379"
     volumes:
       - redis_prod_data:/data
+    environment:
+      - REDIS_DIR=/data
     networks:
       - backend
 
