@@ -18,14 +18,14 @@
         </div>
         <div class="talent-form__form-container__field talent-form__form-container__field--photo">
           <h4 class="talent-form__form-container__title">Select your best photo</h4>
-          <div data-upload-url="<%= upload_talent_path(id: @talent.id, field: :photo) %>" data-dropzone-target="photo" data-id="photoUploader">
-            <div class="dropzone dropzone__as-button" id="photoUploader">
+          <div class="custom-dropzone" data-upload-url="<%= upload_talent_path(id: @talent.id, field: :photo) %>" data-dropzone-target="photo" data-id="photoUploader">
+            <div class="dropzone dropzone-photo dropzone__as-button" id="photoUploader">
             </div>
           </div>
         </div>
         <div class="talent-form__form-container__field talent-form__form-container__field">
           <h4 class="talent-form__form-container__title">Selet your best cover photo</h4>
-          <div data-upload-url="<%= upload_talent_path(id: @talent.id, field: :cover_photo) %>" data-dropzone-target="coverPhoto" data-id="coverPhotoUploader">
+          <div class="custom-dropzone" data-upload-url="<%= upload_talent_path(id: @talent.id, field: :cover_photo) %>" data-dropzone-target="coverPhoto" data-id="coverPhotoUploader">
             <div class="dropzone dropzone__cover-photo" id="coverPhotoUploader">
             </div>
           </div>

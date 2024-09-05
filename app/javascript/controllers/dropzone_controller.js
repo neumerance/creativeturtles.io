@@ -5,7 +5,18 @@ export default class extends Controller {
   static targets = ["photo", "coverPhoto"];
 
   photoTargetConnected() {
-    this.initDropzone(this.photoTarget, "Select photo", { maxFiles: 1 });
+    this.initDropzone(
+      this.photoTarget, 
+      "Select photo", 
+      { 
+        maxFiles: 1,
+        thumbnailWidth: 220,
+        thumbnailHeight: 220,
+        resizeWidth: 220,
+        resizeHeight: 220,
+        maxFiles: 1,
+      }
+    );
   }
 
   coverPhotoTargetConnected() {
