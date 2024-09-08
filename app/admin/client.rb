@@ -1,5 +1,5 @@
 ActiveAdmin.register Client do
-  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :country
+  permit_params :email, :password, :password_confirmation, :first_name, :last_name
 
   filter :email
   filter :created_at
@@ -19,7 +19,6 @@ ActiveAdmin.register Client do
     inputs 'Abouts' do
       input :first_name
       input :last_name
-      input :country
     end
 
     actions
@@ -30,7 +29,6 @@ ActiveAdmin.register Client do
     column :email
     column :first_name
     column :last_name
-    column :country
 
     actions
   end

@@ -1,0 +1,21 @@
+.navbar {
+  &-brand {
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  &-search {
+    width: 100%;
+
+    .control {
+      width: 100%;
+
+      input {
+        &::placeholder {
+          color: #cdcdcd !important;
+        }
+      }
+    }
+  }
+} 

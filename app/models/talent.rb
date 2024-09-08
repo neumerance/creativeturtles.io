@@ -13,7 +13,7 @@ class Talent < User
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["email", "handle", "first_name", "last_name", "country"]
+    ["email", "handle", "first_name", "last_name"]
   end
 
   def self.ransackable_associations(auth_object = nil)

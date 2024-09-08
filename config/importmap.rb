@@ -15,3 +15,4 @@ pin "@rails/actioncable", to: "actioncable.esm.js"
 pin_all_from "app/javascript/channels", under: "channels"
 pin "dropzone" # @6.0.0
 pin "just-extend" # @5.1.1
+

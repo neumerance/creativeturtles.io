@@ -1,0 +1,49 @@
+.product {
+  &__card {
+    border-radius: 0px;
+    margin-bottom: 2em;
+
+    .card-image:first-child img {
+      border-radius: 0px;
+    }
+
+    .card {
+      &-image {
+        display: flex; /* Align images in a row */
+        overflow-x: scroll; /* Make sure it scrolls horizontally */
+        scroll-snap-type: x mandatory; /* Enable scroll snapping */
+        gap: 1rem; /* Add space between images */
+        padding-right: 50px; /* Add padding on the right for visual cue */
+        scrollbar-width: none; /* Firefox: hide the scrollbar */
+        -ms-overflow-style: none; /* Internet Explorer: hide scrollbar */
+
+        figure {
+          flex: 0 0 auto; /* Prevent shrinking and set a fixed width */
+          scroll-snap-align: center; /* Snap each image to the center */
+          width: 100%; /* Ensure the image takes the full width */
+          position: relative;
+        }
+
+        &::after {
+          content: ""; /* This will add an extra visual offset at the end */
+          flex: 0 0 50px; /* Add extra space to the right end of the scroll */
+        }
+
+        &::-webkit-scrollbar {
+          display: none; /* Optional: Hide the scrollbar for a cleaner look */
+        }
+      }
+      &-content {
+        .media {
+          &-left {
+            .image {
+              border: 48px;
+              overflow: hidden;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

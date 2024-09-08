@@ -1,14 +1,3 @@
-<%= content_for :header do %>
-  <%= render partial: "shared/hero_banner" %>
+<% @products.each do |product| %>
+  <%= render partial: "frontend/shared/product_card", locals: { product: product } %>
 <% end %>
-<div class="search">
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-large is-rounded" type="email" placeholder="How can we help with what you're looking for?" />
-    <span class="icon is-medium is-right">
-      <i class="fa-solid fa-wand-sparkles"></i>
-    </span>
-  </div>
-</div>
-<div class="thumbnail-container">
-  <%= render partial: "shared/product/thumbnail", locals: { products: @products, show_talent_badge: true } %>
-</div>

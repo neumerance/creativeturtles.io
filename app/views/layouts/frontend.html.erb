@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <title>CreativeturtlesIo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "frontend", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= auth_token_meta_tag(current_user: current_user) %>
+    <%= action_cable_with_jwt_meta_tag(current_user: current_user) %>
+  </head>
+
+  <body>
+    <%= render partial: "frontend/shared/nav_bar" %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield :header %>
+    <%= yield %>
+    <%= yield :footer %>
+  </body>
+</html>

@@ -7,7 +7,6 @@ FactoryBot.define do
     handle { FFaker::Internet.user_name }
     first_name { FFaker::Name.first_name }
     last_name { FFaker::Name.last_name }
-    country { FFaker::Address.country_code }
     headline { FFaker::LoremIE.paragraph }
     about { FFaker::LoremIE.paragraphs }
 
@@ -18,6 +17,8 @@ FactoryBot.define do
         rewindable_io = StringIO.new(image_data.read)
         talent.photo.attach(io: rewindable_io, filename: "image.jpg", content_type: 'image/jpeg')
       end
+
+      talent.user_preference = build(:user_preference, talent: talent)
     end
   end
 end

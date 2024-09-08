@@ -1,3 +1,3 @@
 class UserPreference < ApplicationRecord
-  belongs_to :user
+  belongs_to :talent, foreign_key: :user_id
 end

@@ -5,7 +5,12 @@ FactoryBot.define do
     name { FFaker::Product.product_name }
     price { FFaker::Number.decimal }
     product_type { 0 }
-    description { FFaker::LoremIE.paragraphs }
+    description do 
+      hash_tags = 3.times.to_a.map do |hash|
+      "##{FFaker::Product.product_name.split(" ").map(&:titleize).join("")}"
+      end
+      (FFaker::LoremIE.paragraphs + hash_tags).join(" ")
+    end
     external_link { FFaker::Internet.http_url }
     talent
     

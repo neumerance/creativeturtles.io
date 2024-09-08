@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :recommendations, only: [:index]
+  resources :hashtags, only: [:show]
 
   get "/products/:slug" => "products#show", as: :product
   get "/:handle" => "talents#show", as: :talent

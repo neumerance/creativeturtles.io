@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  layout "frontend"
+
   def index
     @products = Product.joins(:talent).all
   end

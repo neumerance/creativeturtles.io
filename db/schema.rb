@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_02_075113) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_08_125332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,6 +111,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_075113) do
     t.index ["commontable_type", "commontable_id"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_hashtags_on_name"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
@@ -134,6 +141,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_075113) do
     t.datetime "updated_at", null: false
     t.index ["commendable_type", "commendable_id"], name: "index_recommendations_on_commendable"
     t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "hashtag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_taggings_on_hashtag_id"
+    t.index ["product_id"], name: "index_taggings_on_product_id"
   end
 
   create_table "user_preferences", force: :cascade do |t|
@@ -172,4 +188,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_075113) do
   add_foreign_key "commontator_comments", "commontator_comments", column: "parent_id", on_update: :restrict, on_delete: :cascade
   add_foreign_key "commontator_comments", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "commontator_subscriptions", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "taggings", "hashtags"
+  add_foreign_key "taggings", "products"
 end

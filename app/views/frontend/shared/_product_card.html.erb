@@ -1,0 +1,34 @@
+<div class="product container has-background-primary-100">
+  <div class="product__card card mb-3">
+    <div class="card-image">
+      <% product.images.each do |image| %>
+        <figure class="image is-4by3">
+          <%= image_tag image.variant(:preview), alt: image.filename.to_s %>
+        </figure>
+      <% end %>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <%= image_tag product.talent.photo.variant(:thumb), alt: product.talent.photo.filename.to_s %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <h4 class="title is-4"><%= product.talent.full_name %></h4>
+          <p class="subtitle is-6">@<%= product.talent.handle %></p>
+        </div>
+      </div>
+
+      <div class="content">
+        <h3 class="is-size-3 has-text-weight-light"><%= product.name.titleize %></h3>
+        <p>
+          <%= product.description %>
+          <% product.hashtags.each do |hashtag| %>
+            <%= link_to "##{hashtag.name}", hashtag_path(hashtag) %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

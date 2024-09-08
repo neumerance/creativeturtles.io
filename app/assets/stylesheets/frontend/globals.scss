@@ -1,0 +1,8 @@
+@import "./bulmaswatch.min.css";
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+@import url('https://unpkg.com/dropzone@5/dist/min/dropzone.min.css');
+@import "./nav_bar";
+
+.navbar {
+  z-index: 1020;
+}
