@@ -6,6 +6,27 @@
   height: 100vh; /* Full viewport height */
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 
+  @media only screen and (min-width: 1023px) {
+    flex-direction: row;
+    padding-top: 2em;
+    overflow-x: auto; /* Enable vertical scrolling */
+    scroll-snap-type: x mandatory; /* Enable vertical snapping */
+        
+    .product {
+      scroll-snap-align: left;
+      min-width: 33% !important;
+      max-width: 33% !important;
+    }
+  }
+
+  @media only screen and (min-width: 1215px) { 
+    .product {
+      scroll-snap-align: left;
+      min-width: 25% !important;
+      max-width: 25% !important;
+    }
+  }
+
   &::after, &::before {
     content: "";
     display: block;

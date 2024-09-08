@@ -18,7 +18,7 @@
             </div>
             <div class="media-content">
               <h4 class="title is-4">
-                <%= link_to product.talent.full_name.titleize, landing_page_path(CGI.escape product.talent.handle), class: "has-text-dark"  %>
+                <%= link_to product.talent.full_name.titleize.truncate(25, ommision: "..."), landing_page_path(CGI.escape product.talent.handle), class: "has-text-dark"  %>
               </h4>
               <p class="subtitle is-6">
                 <%= link_to "@#{product.talent.handle}", landing_page_path(CGI.escape product.talent.handle) %>
@@ -30,9 +30,9 @@
               <%= link_to product.name.titleize, landing_page_path(CGI.escape product.slug) %>
             </h3>
             <p>
-              <%= product.description.truncate_words(35, ommision: "...") %>
-              <% product.hashtags.each do |hashtag| %>
-                <%= link_to "##{hashtag.name}", landing_page_path(CGI.escape hashtag.name), rel: "tag"  %>
+              <%= product.description.truncate(125, ommision: "...") %>
+              <% product.hashtags.last(4).each do |hashtag| %>
+                <%= link_to "##{hashtag.name}".truncate(25, ommision: "..."), landing_page_path(CGI.escape hashtag.name), rel: "tag"  %>
               <% end %>
             </p>
         </div>
