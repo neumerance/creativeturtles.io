@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout "frontend"
+
   def jwt_authenticate!
     token = request.headers["Authorization-Token"]
     decoded_token = JWT.decode token, ENV["AUTH_SECRET"], true, { algorithm: "HS256" }

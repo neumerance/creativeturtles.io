@@ -1,9 +1,0 @@
-<div class="profile__content__showcase__container profile__content__showcase__mywork">
-  <div class="profile__content__showcase__mywork__thumbnails">
-    <% if products.present? %>
-      <%= render partial: "shared/product/thumbnail", locals: { products: products } %>
-    <% else %>
-      <blockquote>No work posted yet</blockquote>
-    <% end %>
-  </div>
-</div>

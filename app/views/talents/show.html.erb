@@ -1,14 +1,1 @@
-<%= content_for :header do %>
-  <%= render partial: "talents/show/header", locals: { photo: @talent.photo.variant(:medium), user: @talent } %>
-<% end %>
-<%= render partial: "talents/show/name_section", locals: { id: @talent.id, name: @talent.full_name,  handle_link: "https://#{ENV["HOST_NAME"]}#{talent_path(@talent.handle)}" } %>
-<%= render partial: "talents/show/badges" %>
-<div class="container profile__content">
-  <div class="profile__content__showcase">
-    <%= render partial: "talents/show/headline", locals: { id: @talent.id, headline: @talent.about }  %>
-    <%= render partial: "talents/show/about", locals: { id: @talent.id, about: @talent.about } %>
-    <%= render partial: "talents/show/my_work", locals: { products: @talent.products } %>
-    <%= render partial: "talents/show/recommendations", locals: { talent_id: @talent.id } %>
-  </div>
-  <%= render partial: "talents/show/contacts", locals: { } %>
-</div>
+Talent#show

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum :user_type, { talent: 1, client: 2 }
-  before_validation :define_handle
+  before_validation :ensure_handle_format
 
   has_one :user_preference
   has_one_attached :photo do |attachable|
@@ -27,9 +27,7 @@ class User < ApplicationRecord
 
   private
 
-  def define_handle
-    return unless self.handle.present?
-
-    self.handle = self.handle.parameterize.gsub("_", ".")
+  def ensure_handle_format
+    self.handle = self.handle.parameterize.split("-").map(&:titleize).join("")
   end
 end

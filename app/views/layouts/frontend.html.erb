@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html class="has-navbar-fixed-top" data-theme="light">
   <head>
     <title>CreativeturtlesIo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,7 +12,7 @@
     <%= action_cable_with_jwt_meta_tag(current_user: current_user) %>
   </head>
 
-  <body>
+  <body class="has-background-light">
     <%= render partial: "frontend/shared/nav_bar" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
