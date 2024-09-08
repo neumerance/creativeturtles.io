@@ -1,2 +1,20 @@
-.product {
+.product-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Enable vertical snapping */
+  height: 100vh; /* Full viewport height */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+
+  &::after, &::before {
+    content: "";
+    display: block;
+    height: 20px; /* Adjust height to indicate the presence of more products */
+  }
+
+  .product {
+    scroll-snap-align: start; /* Snap each product to the start of the container */
+    padding: 10px; /* Optional: add padding for visual spacing */
+    box-sizing: border-box; /* Ensure padding does not affect element's height */
+  }
 }

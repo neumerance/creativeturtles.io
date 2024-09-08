@@ -1,3 +1,5 @@
-<% @products.each do |product| %>
-  <%= render partial: "frontend/shared/product_card", locals: { product: product } %>
-<% end %>
+<div class="product-container">
+  <% @products.each do |product| %>
+    <%= render partial: "frontend/shared/product_card", locals: { product: product } %>
+  <% end %>
+</div>
